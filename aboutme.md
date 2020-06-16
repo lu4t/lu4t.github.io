@@ -1,16 +1,19 @@
 ---
 layout: page
-title: About me
-subtitle: Why you'd want to go on a date with me
+title: Sobre mi
+subtitle: Algunos datos, que podrían considerarse "personales"
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+Mi nombre digital es lu4t; uso este nick habitualmente, leo y escribo contenidos de temas que me parecen interesantes sobre:
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+- Ciberseguridad.
+- Arquitecturas y entornos cloud.
+- Stacks para análisis de datos y desarrollo.
+- Protocolos de comunicación.
+- Internet distribuída.
 
-What else do you need?
+
 
 ### my history
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+De mi lado profesional, sólo hablo en las redes habituales. Este sitio y sus contenidos son estríctamente personales. Pese a todo, si tienes alguna **pregunta** o **comentario** que hacerme, estaré encantado de contestar.

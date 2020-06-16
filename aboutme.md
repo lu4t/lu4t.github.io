@@ -4,7 +4,7 @@ title:
 subtitle: Algunos datos, que podrían considerarse "personales"
 ---
 
-Mi nombre digital es **lu4t**; uso este nick habitualmente, leo y escribo contenidos de temas que me parecen interesantes sobre:
+Mi nombre digital es **lu4t**; leo y escribo contenidos de temas que me parecen interesantes, principalmente sobre:
 
 - Ciberseguridad.
 - Arquitecturas y entornos cloud.

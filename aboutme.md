@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Sobre mi
+title:
 subtitle: Algunos datos, que podrían considerarse "personales"
 ---
 
-Mi nombre digital es lu4t; uso este nick habitualmente, leo y escribo contenidos de temas que me parecen interesantes sobre:
+Mi nombre digital es **lu4t**; uso este nick habitualmente, leo y escribo contenidos de temas que me parecen interesantes sobre:
 
 - Ciberseguridad.
 - Arquitecturas y entornos cloud.
@@ -14,6 +14,6 @@ Mi nombre digital es lu4t; uso este nick habitualmente, leo y escribo contenidos
 
 
 
-### my history
+### Vida profesional:
 
 De mi lado profesional, sólo hablo en las redes habituales. Este sitio y sus contenidos son estríctamente personales. Pese a todo, si tienes alguna **pregunta** o **comentario** que hacerme, estaré encantado de contestar.

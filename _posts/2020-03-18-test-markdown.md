@@ -12,10 +12,10 @@ La Arquitectura de Microservicios es la Arquitectura de Software más famosa y u
 
 El principal problema de aplicar los principios y políticas de seguridad a la capa de software, cualesquiera que éstas sean, es que puede derivar en problemas que no aparecían cuando las políticas se diseñaron para ser aplicadas en la infraestructura. Algunos de estos problemas podrían ser de este estilo:
 
-    Los Desarrolladores puede que no sean capaces de implementar las políticas que definamos correctamente.
-    Los Desarrolladores de microservicios no son por lo general expertos en estándares de seguridad, y pueden obviar ciertos aspectos considerados básicos para el que define la política.
-    Por lo general, los lenguajes y stacks de desarrollo incorporan ciertos criterios y buenas prácticas de seguridad; que no tienen porqué ser perfectamente compatibles con las nuestras.
-    El uso de certificados en la capa de aplicación incrementa la complejidad en la administración de la aplicación; y el origen de esta complejidad está precisamente en la gestión de los certificados que emplean las aplicaciones.
+* Los Desarrolladores puede que no sean capaces de implementar las políticas que definamos correctamente.
+* Los Desarrolladores de microservicios no son por lo general expertos en estándares de seguridad, y pueden obviar ciertos aspectos considerados básicos para el que define la política.
+* Por lo general, los lenguajes y stacks de desarrollo incorporan ciertos criterios y buenas prácticas de seguridad; que no tienen porqué ser perfectamente compatibles con las nuestras.
+* El uso de certificados en la capa de aplicación incrementa la complejidad en la administración de la aplicación; y el origen de esta complejidad está precisamente en la gestión de los certificados que emplean las aplicaciones.
 
 La seguridad es un requisito no funcional de todas las aplicaciones; pero sucede que en la mayoría de las empresas, el área que gestiona la seguridad y define los estándares a seguir no tiene un vínculo natural con los equipos de desarrollo. Tradicionalmente su función se concentra en la infraestructura, lo que se traducía en definir reglas en firewall, establecer los controles y gestionar los privilegios de acceso a los servicios de red, etc.
 
@@ -59,10 +59,10 @@ Este flujo, gobernado por completo por el Service Mesh, se encargará de la dist
 
 Estos son los pasos de alto nivel que se implementan en el flujo de configuración:
 
-    El Service Mesh (SM) escucha el API del servidor de Kubernetes, y crea un certificado y un par de claves para cada cuenta de servicio nueva o existente. El SM almacena el certificado y los pares de claves dentro del vault que tenga definido.
-    Cuando se crea un nuevo pod, el SM proporciona al gestor de pods (por ejemplo Kubernetes) el certificado y el par de claves necesarias para que arranque el pod, empleando para acceder al vault la cuenta de servicio asociada al pod.
-    El SM vigila también la vida útil de cada certificado que ha proporcionado al orquestador, y automáticamente rota los certificados a punto de caducar, para que sea posible reescribir los nuevos secretos en cada pod que los necesite en el momento adecuado.
-    El SM también genera y proporciona información de nombres, estableciendo la relación de qué cuenta o cuentas de servicio pueden ejecutar un determinado microservicio. Esta información es además compartida con el proxy Envoy.
+* El Service Mesh (SM) escucha el API del servidor de Kubernetes, y crea un certificado y un par de claves para cada cuenta de servicio nueva o existente. El SM almacena el certificado y los pares de claves dentro del vault que tenga definido.
+* Cuando se crea un nuevo pod, el SM proporciona al gestor de pods (por ejemplo Kubernetes) el certificado y el par de claves necesarias para que arranque el pod, empleando para acceder al vault la cuenta de servicio asociada al pod.
+* El SM vigila también la vida útil de cada certificado que ha proporcionado al orquestador, y automáticamente rota los certificados a punto de caducar, para que sea posible reescribir los nuevos secretos en cada pod que los necesite en el momento adecuado.
+* El SM también genera y proporciona información de nombres, estableciendo la relación de qué cuenta o cuentas de servicio pueden ejecutar un determinado microservicio. Esta información es además compartida con el proxy Envoy.
 
 Todos estos pasos son llevados a cabo por el Service Mesh de forma automática. Algo que es muy importante, ya que hace que los certificados digitales sean fáciles de administrar, además de convertirse en el punto centralizado de actuación en el caso de que suceda algo incorrecto con los certificados.
 
@@ -70,10 +70,10 @@ Todos estos pasos son llevados a cabo por el Service Mesh de forma automática. 
 
 Una de las funciones indispensables de un Service Mesh (SM), es ser capaz de enrutar tráfico entre microservicios. El tráfico permitido, o no permitido, se define en el SM a nivel de servicio. A diferencia de una arquitectura tradicional, el microservicio A no tiene porqué conocer el rango de direcciones IP en el que se encuentra el servicio B con el que se quiere comunicar, el SM se encarga de informar al sidecar proxy anexo a cada microservicio cómo y dónde debe enrutar el tráfico permitido. Para ello, se emplea el flujo de autorización entre servicios, sigue estos pasos descritos a continuación:
 
-    Si el Servicio A quiere hablar con el B, el SM redirige el tráfico saliente desde el proxy del cliente origen, al proxy del cliente destino.
-    El proxy Envoy del cliente origen inicia un handshake sobre MTLS con el proxy Envoy del servicio destino. Durante el handshake, el proxy del lado del cliente también verificará que la cuenta de servicio asociada al certificado utilizado, tiene autorización para ejecutar el servicio en destino.
-    Cuando se completa el handshake entre proxies, se establece una conexión MTLS, y el SM reenvía el tráfico desde el proxy origen al destino.
-    Una vez completada la autorización, el proxy origen reenvía el tráfico al destino empleando conexiones TCP locales.
+* Si el Servicio A quiere hablar con el B, el SM redirige el tráfico saliente desde el proxy del cliente origen, al proxy del cliente destino.
+* El proxy Envoy del cliente origen inicia un handshake sobre MTLS con el proxy Envoy del servicio destino. Durante el handshake, el proxy del lado del cliente también verificará que la cuenta de servicio asociada al certificado utilizado, tiene autorización para ejecutar el servicio en destino.
+* Cuando se completa el handshake entre proxies, se establece una conexión MTLS, y el SM reenvía el tráfico desde el proxy origen al destino.
+* Una vez completada la autorización, el proxy origen reenvía el tráfico al destino empleando conexiones TCP locales.
 
 Como se ver, este flujo está íntimamente ligado en las características nativas de los proxies Envoy, de ahí que sean los proxys más frecuentemente utilizados como sidecars.
 

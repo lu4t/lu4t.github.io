@@ -4,7 +4,7 @@ title: La seguridad Multi Cloud.
 subtitle: La transición.
 gh-repo: lu4t/lu4t.github.io
 gh-badge: [star, fork, follow]
-tags: [Cloud][Security]
+tags: [Cloud]
 comments: true
 ---
 

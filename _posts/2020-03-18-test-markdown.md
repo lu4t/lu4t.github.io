@@ -4,7 +4,7 @@ title: La autenticación de microservicios.
 subtitle: Seguridad en un service mesh.
 gh-repo: lu4t/lu4t.github.io
 gh-badge: [star, fork, follow]
-tags: [Security][Cloud]
+tags: [Cloud]
 comments: true
 ---
 

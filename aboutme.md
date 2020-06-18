@@ -4,6 +4,7 @@ title:
 subtitle: Algunos datos, que podrían considerarse "personales"
 ---
 
+#### Información personal:
 En el universo digital, suelo utilizar **lu4t** como nick; leo y escribo contenidos de temas que me parecen interesantes, principalmente sobre:
 
 - Ciberseguridad.
@@ -14,7 +15,7 @@ En el universo digital, suelo utilizar **lu4t** como nick; leo y escribo conteni
 
 
 
-### Vida profesional:
+#### Vida profesional:
 
 Mis datos profesionales se pueden encontrar en las redes sociales habituales de esos contenidos. Este sitio es estríctamente personal. 
 

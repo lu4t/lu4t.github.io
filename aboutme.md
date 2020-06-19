@@ -13,7 +13,9 @@ En el universo digital, suelo utilizar **lu4t** como nick; leo y escribo conteni
 - Arquitecturas y entornos cloud.
 - Stacks de desarrollo, y análisis de datos.
 - Protocolos de comunicación, y en particular transmisión de contenido multimedia.
-- Internet distribuída.
+- Internet e Identidad distribuída.
+- Dockers en Synology NAS.
+- Linux y Firmwares Custom.
 
 
 

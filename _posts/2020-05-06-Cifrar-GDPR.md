@@ -3,7 +3,7 @@ layout: post
 title: Cifrar, o no encriptar.
 subtitle: Las cosas de la RGPD
 gh-repo: lu4t/lu4t.github.io
-gh-badge: [star, fork, follow]
+gh-badge: [star, follow]
 tags: [Security]
 comments: true
 ---

@@ -3,7 +3,7 @@ layout: post
 title: La historia de los DNS
 subtitle: Un buen blog, tiene que empezar siempre con una buena historia.
 gh-repo: lu4t/lu4t.github.io
-gh-badge: [star, fork, follow]
+gh-badge: [star, follow]
 tags: [Comms]
 comments: true
 ---

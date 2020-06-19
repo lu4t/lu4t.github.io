@@ -13,10 +13,14 @@ author: lu4t
 
 navbar-links:
   Sobre mi: "aboutme"
-  Enlaces a:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Página personal: "https://lu4t.github.io"
+  Blog personal: "https://lu4t.github.io/blog/"
+  Proyectos:
+    - inJaus: "https://inJaus.eu/"
+    - inUtil: "https://inUtil.info/"
+    - Herminia: 
+    - inBu: 
+    - lu4f: 
+ 
 
 # --- Logo --- #
 

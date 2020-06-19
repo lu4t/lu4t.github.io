@@ -3,3 +3,5 @@
 - fork de: daattali/beautiful-jekyll
 - readme copiado en instrucciones theme.md
 - borrada la carpeta .github que vino del fork
+- añadido gtag.
+- movido el blog a /blog

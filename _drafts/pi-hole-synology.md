@@ -6,8 +6,8 @@ cover-img: /assets/img/path.jpg
 tags: [Synology]
 ---
 
-¿Qué es pi-hole?, básicamente es un servicio de red bloqueador de anuncios, dando servicio de resolución de nombres (DNS) e incluso de asignación de IPs (DHCP) a todos los dispositivos que están conectados a una red doméstica. 
-Y ¿cómo lo hace?: funciona como un DNS local que intercepta las peticiones a DNS que hacen los dispositivos conectados a tu red, y comprueba si están incluídos en unas listas de sitios conocidos y que se dedican a servir anuncios. 
+¿Qué es pi-hole?, básicamente es un servicio de red para la resolución de nombres de Dominio (DNS), que bloquea los anuncios y publicidad; opcionalmente, también puede dar servicio de asignación de IPs (DHCP) a todos los dispositivos que están conectados a una red doméstica. 
+Y ¿cómo lo hace?: funciona como un DNS local que intercepta las peticiones a DNS que hacen todos los dispositivos conectados a tu red, y comprueba si estás llamando a servidores incluídos en unas listas de sitios que se dedican a servir anuncios. 
 
 La instalación de pi-hole como un docker sobre una NAS Synology tiene varios pasos, y los vamos a comentar en este post. Ya hay multitud de videos en youtube que cubren cómo configurar una pi-hole una vez instalada, así que nos vamos a centrar en las particularidades que tiene la configuración de una pi-hole para que arranque como un docker en una Synology. En gran medida, tenemos que lidiar con el hecho de que una Synology tiene muchos servicios arrancados "de serie", y por tanto la probabilidad de que haya un conflicto de puertos es alta; esto hace que parezca más dificil instalar una pi-hole en una Synology, que en una Raspberry. Pero si tomais las precauciones que os explico a continuación, vereis que no hay ningún problema.
 

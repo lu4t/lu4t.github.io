@@ -14,9 +14,9 @@ En el universo digital, suelo utilizar **lu4t** como nick; leo y escribo conteni
 - Stacks de desarrollo, y análisis de datos.
 - Protocolos de comunicación, y en particular transmisión de contenido multimedia.
 - Internet e Identidad distribuída.
-- Cosas que se pueden hacer con un NAS Synology.
 - cosas que hacer con eBPF.
 - Linux y Firmwares Custom.
+- Cosas que se pueden hacer con una NAS Synology.
 
 
 

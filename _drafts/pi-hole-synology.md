@@ -21,12 +21,15 @@ Lo primero que hacemos es iniciar sesión en nuestra NAS, y vamos a la carpeta d
 Creamos en ella la carpeta persistente de la pi-hole: 
 `mkdir pi-hole`
 y dentro de ella dos carpetas más: 
+
 `cd pi-hole` 
+
 `mkdir etc-pihole` 
+
 `mkdir etc-dnsmasq.d` 
 
 
-A continuación, crearemos un controlador de red virtual (un macvlan), gracias a controlador podremos conseguir que la interfaz de red que usa el docker de pi-hole sea diferente del de la Synology, pudiendo tener una dirección IP diferente. Si no hiciésemos esto, la forma estandard en la que los dockers se conectan con su Host, es a través del bridge que se crea por defecto. El efecto que esto produce es que, para acceder a un determinado docker desde mi LAN, voy a tener que usar la IP del Host. Si para acceder al docker pi-hole, uso la IP de la Synology, no podré llegar sin redirigir puertos... Como la Synology tiene muchos puertos ya ocupados, lo ideal es evitar la posibilidad de conflicto asignando su propia IP al docker pi-hole y olvidarnos del problema.
+A continuación, crearemos un controlador de red virtual (llamado macvlan en docker), gracias a este controlador podremos conseguir que la interfaz de red que usa el docker de pi-hole sea diferente de la que usa la Synology, pudiendo tener una dirección IP diferente. Si no hiciésemos esto, la forma estandard en la que los dockers se conectan con su Host, es a través del bridge que se crea por defecto. El efecto que esto produce es que, para acceder a un determinado docker desde mi LAN, voy a tener que usar la IP del Host. Si para acceder al docker pi-hole, uso la IP de la Synology, no podré llegar sin redirigir puertos... Como la Synology tiene muchos puertos ya ocupados, lo ideal es evitar la posibilidad de conflicto asignando su propia IP al docker pi-hole y olvidarnos del riesgo de problemas. Esto puede sonar a "matar moscas a cañonazos", pero no es así, el servicio DNS es crítico para la estabilidad de nuestra conexión.
 
 Lo primero es averiguar cuál es el nombre de la interfaz de red de la synology, escribo:
 `ip addr` 

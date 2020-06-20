@@ -6,8 +6,10 @@ cover-img: /assets/img/path.jpg
 tags: [Synology]
 ---
 
-¿Qué es pi-hole?, básicamente es un servicio de red bloqueador de anuncios, dando servicio de resolución de nombres (DNS) e incluso de asignación de IPs (DHCP) a todos los dispositivos que están conectados a una red doméstica. 
-Y ¿cómo lo hace?: funciona como un DNS local que intercepta las peticiones a DNS que hacen los dispositivos conectados a tu red, y comprueba si están incluídos en unas listas de sitios conocidos y que se dedican a servir anuncios. 
+¿Qué es pi-hole?, básicamente es un servicio de red para la resolución de nombres de Dominio (DNS), que bloquea los anuncios y publicidad; opcionalmente, también puede dar servicio de asignación de IPs (DHCP) a todos los dispositivos que están conectados a una red doméstica. 
+Y ¿cómo lo hace?: funciona como un DNS local que intercepta las peticiones a DNS que hacen todos los dispositivos conectados a tu red, y comprueba si estás llamando a servidores incluídos en unas listas de sitios que se dedican a servir anuncios. 
+
+Muchos utilizamos este tipo de bloqueadores desde hace tiempo en nuestros navegadores; aunque esos plug-ins emplean otras técnicas. Utilizando pi-hole, puedes conseguir el mismo efecto, pero en todos los dispositivos que hoy en día tenemos en casa conectados a internet: smartTVs, tablets, teléfonos móviles, el ordenador del niño y del abuelo...
 
 La instalación de pi-hole como un docker sobre una NAS Synology tiene varios pasos, y los vamos a comentar en este post. Ya hay multitud de videos en youtube que cubren cómo configurar una pi-hole una vez instalada, así que nos vamos a centrar en las particularidades que tiene la configuración de una pi-hole para que arranque como un docker en una Synology. En gran medida, tenemos que lidiar con el hecho de que una Synology tiene muchos servicios arrancados "de serie", y por tanto la probabilidad de que haya un conflicto de puertos es alta; esto hace que parezca más dificil instalar una pi-hole en una Synology, que en una Raspberry. Pero si tomais las precauciones que os explico a continuación, vereis que no hay ningún problema.
 
@@ -19,12 +21,15 @@ Lo primero que hacemos es iniciar sesión en nuestra NAS, y vamos a la carpeta d
 Creamos en ella la carpeta persistente de la pi-hole: 
 `mkdir pi-hole`
 y dentro de ella dos carpetas más: 
+
 `cd pi-hole` 
+
 `mkdir etc-pihole` 
+
 `mkdir etc-dnsmasq.d` 
 
 
-A continuación, crearemos un controlador de red virtual (un macvlan), gracias a controlador podremos conseguir que la interfaz de red que usa el docker de pi-hole sea diferente del de la Synology, pudiendo tener una dirección IP diferente. Si no hiciésemos esto, la forma estandard en la que los dockers se conectan con su Host, es a través del bridge que se crea por defecto. El efecto que esto produce es que, para acceder a un determinado docker desde mi LAN, voy a tener que usar la IP del Host. Si para acceder al docker pi-hole, uso la IP de la Synology, no podré llegar sin redirigir puertos... Como la Synology tiene muchos puertos ya ocupados, lo ideal es evitar la posibilidad de conflicto asignando su propia IP al docker pi-hole y olvidarnos del problema.
+A continuación, crearemos un controlador de red virtual (llamado macvlan en docker), gracias a este controlador podremos conseguir que la interfaz de red que usa el docker de pi-hole sea diferente de la que usa la Synology, pudiendo tener una dirección IP diferente. Si no hiciésemos esto, la forma estandard en la que los dockers se conectan con su Host, es a través del bridge que se crea por defecto. El efecto que esto produce es que, para acceder a un determinado docker desde mi LAN, voy a tener que usar la IP del Host. Si para acceder al docker pi-hole, uso la IP de la Synology, no podré llegar sin redirigir puertos... Como la Synology tiene muchos puertos ya ocupados, lo ideal es evitar la posibilidad de conflicto asignando su propia IP al docker pi-hole y olvidarnos del riesgo de problemas. Esto puede sonar a "matar moscas a cañonazos", pero no es así, el servicio DNS es crítico para la estabilidad de nuestra conexión.
 
 Lo primero es averiguar cuál es el nombre de la interfaz de red de la synology, escribo:
 `ip addr` 

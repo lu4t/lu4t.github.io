@@ -15,8 +15,8 @@ navbar-links:
   Sobre mi: "aboutme"
   Blog personal: "https://lu4t.github.io/blog/"
   Proyectos:
-    - inJaus: "https://inJaus.eu/"
     - inUtil: "https://inUtil.info/"
+    - inJaus: "https://inJaus.eu/"
     - Herminia: 
     - inBu: 
     - lu4f: 
@@ -175,8 +175,8 @@ timezone: "Europe/Madrid"
 markdown: kramdown
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
-# la siguente linea la he añadido para mover el blog fuera de la home, y llevarlo a /blog/index.html
 paginate: 5
+# la siguente linea la he añadido para mover el blog fuera de la home, y llevarlo a /blog/index.html
 paginate_path: "/blog/page:num/"
 
 kramdown:

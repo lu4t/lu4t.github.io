@@ -48,6 +48,6 @@ Pero de nuevo, no caigamos en la trampa de pensar que cifrar es una labor simple
 
 Hasta aquí, algunas reflexiones que pienso que hay que considerar a la hora de decidir si nos conviene o no el cifrado; si de lo que se trata es de cumplir la norma, sea GDPR, sea cualquier otra, la fórmula más eficaz será función de cada entorno, pero en general: una descripción detallada y documentada de dónde están los datos a proteger, medidas que demuestren que se monitoriza el acceso a los mismos, y se detectan accesos fuera de la política establecida, debería ser suficiente. El riesgo que asumimos por implantar el cifrado de nuestros datos debe ser medido (y medible) antes de tomar una decisión.
 
-La GDPR, en castellano: https://www.boe.es/doue/2016/119/L00001-00088.pdf
+[La GDPR, en castellano](https://www.boe.es/doue/2016/119/L00001-00088.pdf)
 
-Transposición de GDPR a España (RGPD): https://www.boe.es/buscar/act.php?id=BOE-A-2018-10751
+[Transposición de GDPR a España (RGPD)](https://www.boe.es/buscar/act.php?id=BOE-A-2018-10751)

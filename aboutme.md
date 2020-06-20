@@ -6,15 +6,16 @@ subtitle: Algunos datos, que podrían considerarse "personales"
 
 
 
-#### Información personal:
+#### Intereses personales:
 En el universo digital, suelo utilizar **lu4t** como nick; leo y escribo contenidos de temas que me parecen interesantes, principalmente sobre:
 
-- Ciberseguridad.
-- Arquitecturas y entornos cloud.
+
+- Ciberseguridad y Arquitecturas de entornos cloud.
 - Stacks de desarrollo, y análisis de datos.
 - Protocolos de comunicación, y en particular transmisión de contenido multimedia.
 - Internet e Identidad distribuída.
-- Dockers en Synology NAS.
+- Cosas que se pueden hacer con un NAS Synology.
+- cosas que hacer con eBPF.
 - Linux y Firmwares Custom.
 
 

@@ -18,24 +18,28 @@ El objetivo que queremos conseguir es hacer que la pi-hole corra en un docker co
 Para que no te pierdas durante el post: vamos a suponer que la IP de la Synology es la 192.168.1.14, y que hemos decidido que la pi-hole va a tener la 192.168.1.30 Esto, lógicamente, son dos ejemplos. Tú puedes decidir las IPs que repartes en tu red. Sólo asegurate de que no estén ya asignadas, o que no están em el rango asignable por DHCP.
 
 Lo primero que hacemos es iniciar sesión en nuestra NAS, y vamos a la carpeta donde se guardan los archivos persistentes de los dockers. Normalmente, en una Synology, la ruta es /volume1/docker/
-Creamos en ella la carpeta persistente de la pi-hole: 
-`mkdir pi-hole`
+Creamos en ella la carpeta persistente de la pi-hole:
+
+    `mkdir pi-hole`
+
 y dentro de ella dos carpetas más: 
 
-`cd pi-hole` 
+    `cd pi-hole` 
 
-`mkdir etc-pihole` 
+    `mkdir etc-pihole` 
 
-`mkdir etc-dnsmasq.d` 
+    `mkdir etc-dnsmasq.d` 
 
 
 A continuación, crearemos un controlador de red virtual (llamado macvlan en docker), gracias a este controlador podremos conseguir que la interfaz de red que usa el docker de pi-hole sea diferente de la que usa la Synology, pudiendo tener una dirección IP diferente. Si no hiciésemos esto, la forma estandard en la que los dockers se conectan con su Host, es a través del bridge Docker que se crea por defecto. Si no hiciésemos esto, el efecto que se produciría es que para acceder a un determinado docker desde mi LAN, voy a tener que usar la IP del Host. Si para acceder al docker pi-hole usase la IP de la Synology, no podría a ella llegar sin redirigir puertos. Otro efecto es que, si activamos pi-hole como servicio DHCP, no llegaría a recibir las peticiones de asignación de IP. Además, como una Synology tiene muchos puertos ya ocupados, lo ideal es evitar la posibilidad de conflicto asignando su propia IP al docker pi-hole y olvidarnos del riesgo de sufrir problemas. Esto puede sonar a "matar moscas a cañonazos", pero no es así; no olvides que el servicio DNS es crítico para la estabilidad de nuestra conexión.
 
 Lo primero es averiguar cuál es el nombre de la interfaz de red de la synology, escribo:
-`ip addr` 
+
+ `ip addr`
+
 obtendré una lista de interfaces, y anotaré el nombre de la que está asociada con la IP de mi Synology (en mi ejemplo: la IP es 192.168.1.30, y el nombre de la interfaz es: eth0). El nombre de la interfaz lo vamos a necesitar para crear la interfaz macvlan. 
 Usamos ahora el siguiente comando: 
-`sudo docker network create -d macvlan --subnet=192.168.1.0/24 --ip-range=192.168.1.30/32 --gateway=192.168.1.1 -o parent=eth0 pihole_network` 
+    `sudo docker network create -d macvlan --subnet=192.168.1.0/24 --ip-range=192.168.1.30/32 --gateway=192.168.1.1 -o parent=eth0 pihole_network` 
 
 Este comando docker nos permite:
 - crear una red docker con network create.
@@ -50,7 +54,7 @@ Si ahora accedemos a la aplicación de gestión de Dockers de Synology, veremos 
 
 En el siguiente paso, vamos a crear un bridge al que conectaremos la pi-hole, empleando la interfaz de red que acabamos de definir. Usamos este comando:
 
-`sudo docker network create -d bridge --subnet=192.168.1.0/24 --ip-range=192.168.1.30/32 --gateway=192.168.2.1 pihole_bridge` 
+    `sudo docker network create -d bridge --subnet=192.168.1.0/24 --ip-range=192.168.1.30/32 --gateway=192.168.2.1 pihole_bridge` 
 
 Este comando docker nos permite:
 - crear una red docker con network create.
@@ -78,4 +82,4 @@ Para finalizar, ejecutaremos el docker con pi-hole y haremos las siguientes veri
 
 Por último, si estas pruebas se han superado, ya podemos completar la configuración. El último paso consiste en ajustar cuál es el DNS primario de la Synology, dentro de los parámetros de red indicaremos que su DNS primario es: 192.168.2.2 De este modo, cuando la NAS tenga que resolver un nombre empleará como DNS el docker pi-hole que reside en ella. Lo mismo sucede con el router de tu ISP, conviene que sobre-escribas su configuración por defecto y que pase a apuntar a la pi-hole.
 
-Sólo un comentario para finalizar este post. Es perfectamente posible lograr que pi-hole funcione símplemente redirigiendo puertos en la NAS, como hacemos con muchos otros dockers. Sin embargo, en mi experiencia esta configuración es más estable, especialmente si pi-hole va a ser tu DNS y DHCP local. Determinadas funcionalidades requiren de tener una dirección MAC asociada a la interfaz conectada la la LAN.
+Sólo un comentario para finalizar este post. Es perfectamente posible lograr que pi-hole funcione símplemente redirigiendo puertos en la NAS, como hacemos con muchos otros dockers. Sin embargo, en mi experiencia esta configuración es más estable, especialmente si pi-hole va a ser tu DNS y DHCP local. Determinadas funcionalidades requiren de tener una dirección MAC asociada a la interfaz conectada la LAN.

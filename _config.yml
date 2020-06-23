@@ -210,6 +210,7 @@ exclude:
   - README.md
   - screenshot.png
   - docs/
+  - _drafts
 
 plugins:
   - jekyll-paginate

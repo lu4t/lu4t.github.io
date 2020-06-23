@@ -17,6 +17,7 @@ En el universo digital, suelo utilizar **lu4t** como nick; leo y escribo conteni
 - cosas que hacer con eBPF.
 - Linux y Firmwares Custom.
 - Cosas que se pueden hacer con una NAS Synology.
+- envoy en ARM64
 
 
 
